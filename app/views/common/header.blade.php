@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shipping - Orders</title>
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/jquery-2.2.0.min.js')  }}" ></script>
     <script src="{{ asset('/js/bootstrap.min.js')  }}" ></script>
 </head>

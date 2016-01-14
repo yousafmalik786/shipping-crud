@@ -1,26 +1,20 @@
 <?php
-
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
-
-class User extends Eloquent implements UserInterface, RemindableInterface {
-
-	use UserTrait, RemindableTrait;
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+use DB;
+class User {
+    /**
+     * @param : array $data
+     * @return array
+     */
+    public function login($data){
+        $query = "SELECT * FROM user WHERE email = :email AND password = :password";
+        $results = DB::select($query, $data);
+        $response = array('userName'=> '','status'=> false);
+        if(count($results)> 0){
+            $response['id'] = $results->id;
+            $response['name'] = $results->name;
+            $response['status'] = true;
+        }
+        return $response;
+    }
 
 }

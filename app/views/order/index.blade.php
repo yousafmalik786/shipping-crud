@@ -24,34 +24,11 @@
                         <td>1</td>
                         <td>31.3</td>
                         <td>10-08-2014</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>SPR-145</td>
-                        <td>Argentina</td>
-                        <td>Spanish (official), English, Italian, German, French</td>
-                        <td>1</td>
-                        <td>31.3</td>
-                        <td>10-08-2014</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>SPR-145</td>
-                        <td>Argentina</td>
-                        <td>Spanish (official), English, Italian, German, French</td>
-                        <td>1</td>
-                        <td>31.3</td>
-                        <td>10-08-2014</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>SPR-145</td>
-                        <td>Argentina</td>
-                        <td>Spanish (official), English, Italian, German, French</td>
-                        <td>1</td>
-                        <td>31.3</td>
-                        <td>10-08-2014</td>
-                        <td></td>
+                        <td>
+                            <a href="/order/1">&nbsp;<i class="fa fa-eye"></i></a>
+                            <a href="/order/update/1">&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i></a>
+                            <a href="javascript:void(0)" onclick="deleteOrder(1);">&nbsp; <i class="fa fa-times"></i></a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

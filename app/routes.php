@@ -17,4 +17,5 @@
 });*/
 
 
-Route::get('/', 'OrderController@index');
+//Route::get('/orders', 'OrderController@index');
+Route::get('/', 'UserController@index');
