@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50625
 File Encoding         : 65001
 
-Date: 2016-01-15 01:38:16
+Date: 2016-01-16 01:51:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,12 @@ CREATE TABLE `company` (
   `contact_person` varchar(120) NOT NULL,
   `contact_person_phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of company
 -- ----------------------------
+INSERT INTO `company` VALUES ('1', 'South Logistics', 'Boriñaur enparantza, 21\n07750 Ferreries', 'Charlene A. Saddler', '671 347 895');
 
 -- ----------------------------
 -- Table structure for `item`
@@ -43,11 +44,12 @@ CREATE TABLE `item` (
   `charges` float(10,2) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of item
 -- ----------------------------
+INSERT INTO `item` VALUES ('1', 'a small box', 'A box with soaps', '15.00', '1');
 
 -- ----------------------------
 -- Table structure for `order`
@@ -60,7 +62,7 @@ CREATE TABLE `order` (
   `user_id` int(11) NOT NULL,
   `ship_to` int(11) NOT NULL,
   `ship_from` int(11) NOT NULL,
-  `item_ids` varchar(255) DEFAULT NULL COMMENT 'Comma sperated item ids',
+  `item_id` int(255) NOT NULL COMMENT 'Comma sperated item ids',
   `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -68,7 +70,7 @@ CREATE TABLE `order` (
 -- ----------------------------
 -- Records of order
 -- ----------------------------
-INSERT INTO `order` VALUES ('1', null, null, '0', '0', '0', null, null);
+INSERT INTO `order` VALUES ('1', 'advd4514', '2016-01-14', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `ship_from`
@@ -85,11 +87,12 @@ CREATE TABLE `ship_from` (
   `zip` int(20) DEFAULT NULL,
   `country` varchar(80) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of ship_from
 -- ----------------------------
+INSERT INTO `ship_from` VALUES ('1', 'DianeJFrazier@dayrep.com', 'Diane', 'J. Frazier', '753 278 634', 'C/ Canarias, 88\n20212 Olaberria', 'Olaberria', '20212', 'Spain');
 
 -- ----------------------------
 -- Table structure for `ship_to`
@@ -106,11 +109,12 @@ CREATE TABLE `ship_to` (
   `zip` int(20) DEFAULT NULL,
   `country` varchar(80) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of ship_to
 -- ----------------------------
+INSERT INTO `ship_to` VALUES ('1', 'RosellaTThomas@rhyta.com', 'Rosella', 'T. Thomas', '01.75.43.68.60', '42, Rue du Palais\n91150 ÉTAMPES', 'ÉTAMPES', '91150', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -122,8 +126,9 @@ CREATE TABLE `user` (
   `email` varchar(85) NOT NULL,
   `password` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', 'Yousaf', 'yousafml786@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
