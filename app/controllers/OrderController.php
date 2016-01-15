@@ -16,18 +16,16 @@ class OrderController extends BaseController {
         $data = ['orders' => $orders,'user' => $user];
         return View::make('order.index',$data);
     }
-    public function show(){
-        return View::make('order.order');
+    public function show($id){
+        $user = Session::get('user_data');
+        $userId = $user['id'];
+        $order = Order::get($id,$userId);
+        if(count($order) < 1) return;
+        $data = array('order' => $order[0]);
+        return View::make('order.order',$data);
     }
-    public function insert(){
-        // get the POST data
-        $input_data = Input::all();
-        $order = new Order();
-        if ($order->validate($input_data)){
-            //save data to order
-        }else {
-            $errors = $b->errors();
-        }
+    public function showCreateForm(){
+        return View::make('order.create');
     }
     public function update(){
         // get the POST data

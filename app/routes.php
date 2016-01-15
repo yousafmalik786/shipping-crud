@@ -23,3 +23,4 @@ Route::post('/user/login', 'UserController@login');
 
 Route::get('/orders', 'OrderController@index');
 Route::get('/order/{id}', 'OrderController@show');
+Route::get('/order/123', 'OrderController@showCreateForm');

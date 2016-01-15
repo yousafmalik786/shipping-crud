@@ -3,19 +3,19 @@
     <div class="row ">
         <div class="col-lg-6 col-md-6 col-sm-6">
             <h2>Ship From :</h2>
-            <h4><strong>firstname lastname</strong></h4>
-            <h4>678, Lamen Trees Lane,Boston Bay</h4>
-            <h4>United States - 2018976</h4>
-            <h4><strong>Email: </strong>  email@address</h4>
-            <h4><strong>Phone: </strong>phone_value</h4>
+            <h4><strong>{{$order->sf_first_name}} {{ $order->sf_last_name }}</strong></h4>
+            <h4>{{ $order->sf_address }}</h4>
+            <h4>{{ $order->sf_country }}</h4>
+            <h4><strong>Email: </strong>{{ $order->sf_email }}</h4>
+            <h4><strong>Phone: </strong>{{ $order->sf_phone_no }}</h4>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
             <h2>Ship To :</h2>
-            <h4><strong>firstname lastname</strong></h4>
-            <h4>678, Lamen Trees Lane,Boston Bay</h4>
-            <h4>United States - 2018976</h4>
-            <h4><strong>Email: </strong>  email@address</h4>
-            <h4><strong>Phone: </strong>phone_value</h4>
+            <h4><strong>{{ $order->st_first_name }} {{ $order->st_last_name }}</strong></h4>
+            <h4>{{ $order->st_address }}</h4>
+            <h4>{{ $order->st_country }}</h4>
+            <h4><strong>Email: </strong>{{ $order->st_email }}</h4>
+            <h4><strong>Phone: </strong>{{ $order->st_phone_no }}</h4>
         </div>
     </div>
     <hr />
@@ -35,11 +35,11 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Plugin Development</td>
-                        <td>2</td>
-                        <td>100 USD</td>
-                        <td>200 USD</td>
+                        <td>{{ $order->reference_no }}</td>
+                        <td>{{ $order->i_name }}</td>
+                        <td>{{ $order->i_description }}</td>
+                        <td>{{ $order->quantity }}</td>
+                        <td>{{ $order->charges }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -51,10 +51,10 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h3>Shipping Company :</h3>
-            <h4><strong>company name</strong></h4>
-            <h5>Address</h5>
-            <h5><strong>Contact Person: </strong>  ali ahmed</h5>
-            <h5><strong>Phone: </strong>phone_value</h5>
+            <h4><strong>{{ $order->c_company_name }}</strong></h4>
+            <h5>{{ $order->c_address }}</h5>
+            <h5><strong>Contact Person: </strong>{{ $order->c_contact_person }}</h5>
+            <h5><strong>Phone: </strong>{{ $order->c_contact_person_phone }}</h5>
         </div>
     </div>
 </div>

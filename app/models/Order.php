@@ -32,8 +32,28 @@ class Order  {
      * @param : int $id
      * @return array
      */
-    public function get($id){
-        $result = DB::select('select * from order where id = :id', array($id));
+    public static function get($id,$userId){
+        $query = "SELECT  o.reference_no, o.created_on,
+        sf.email as sf_email,sf.frist_name as sf_first_name,sf.last_name as sf_last_name,
+        sf.phone_no as sf_phone_no, sf.address as sf_address,sf.country as sf_country,
+        st.email as st_email,st.frist_name as st_first_name,st.last_name as st_last_name,
+        st.phone_no as st_phone_no, st.address as st_address,st.country as st_country,
+        c.company_name as c_company_name,c.address as c_address,
+        c.contact_person as c_contact_person,c.contact_person_phone as c_contact_person_phone,
+        i.`name` as i_name, i.description as i_description, i.charges, i.quantity
+        FROM `order` o
+        LEFT JOIN `company` c
+        ON c.id = o.company_id
+        LEFT JOIN ship_from sf
+        ON sf.id = o.ship_from
+        LEFT JOIN ship_to st
+        ON st.id = o.ship_to
+        LEFT JOIN item i
+        ON i.id = o.item_id
+        WHERE o.user_id = :user_id
+        AND o.id = :id";
+        $param = array('user_id' => $userId,'id' => $id);
+        $result = DB::select($query, $param);
         return $result;
     }
     /**
