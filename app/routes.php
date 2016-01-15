@@ -19,3 +19,7 @@
 
 //Route::get('/orders', 'OrderController@index');
 Route::get('/', 'UserController@index');
+Route::post('/user/login', 'UserController@login');
+
+Route::get('/orders', 'OrderController@index');
+Route::get('/order/{id}', 'OrderController@show');

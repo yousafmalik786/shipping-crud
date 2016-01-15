@@ -17,19 +17,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>SPR-145</td>
-                        <td>Argentina</td>
-                        <td>Spanish (official), English, Italian, German, French</td>
-                        <td>1</td>
-                        <td>31.3</td>
-                        <td>10-08-2014</td>
-                        <td>
-                            <a href="/order/1">&nbsp;<i class="fa fa-eye"></i></a>
-                            <a href="/order/update/1">&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i></a>
-                            <a href="javascript:void(0)" onclick="deleteOrder(1);">&nbsp; <i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                    @if (count($orders) > 0)
+                        @foreach($orders as $order)
+                        <tr>
+                            <td>{{ $order->reference_no }}</td>
+                            <td>{{ $order->name }}</td>
+                            <td>{{ $order->description }}</td>
+                            <td>{{ $order->quantity }}</td>
+                            <td>{{ $order->charges }}</td>
+                            <td>{{ ($order->created_on)?date('m-d-Y',strtotime($order->created_on)):'' }}</td>
+                            <td>
+                                <a href="/order/{{ $order->id }}">&nbsp;<i class="fa fa-eye"></i></a>
+                                <a href="/order/update/{{ $order->id }}">&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i></a>
+                                <a href="javascript:void(0)" onclick="deleteOrder({{ $order->id }});">&nbsp; <i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div><!--end of .table-responsive-->

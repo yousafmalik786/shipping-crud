@@ -1,6 +1,6 @@
 <?php
 use DB;
-class Order  {
+class Item  {
     private $rules = array(
         'name'  => 'required',
         'description'  => 'required',
@@ -33,22 +33,7 @@ class Order  {
      * @return array
      */
     public function get($id){
-        $result = DB::select('select * from order where id = :id', array($id));
-        return $result;
-    }
-    /**
-     * @param : int $id
-     * @return array
-     */
-    public static function getAll($userId){
-        $query = "SELECT  o.id, o.reference_no,
-                  o.created_on,i.`name`,i.description,
-                  i.quantity,i.charges
-                  FROM `order` o
-                  LEFT JOIN item i
-                  ON i.id = o.item_id
-                  WHERE o.user_id = :user_id";
-        $result = DB::select($query, array('user_id' => $userId));
+        $result = DB::select('select * from item where id = :id', array($id));
         return $result;
     }
     /**
@@ -56,7 +41,7 @@ class Order  {
      * @return int $id
      */
     public function insert($data){
-        $id = DB::table('order')->insertGetId($data);
+        $id = DB::table('item')->insertGetId($data);
         //DB::getPdo()->lastInsertId();
         return $id;
     }
@@ -67,7 +52,7 @@ class Order  {
      * @return boolean
      */
     public function update($id,$data){
-        DB::table('order')
+        DB::table('item')
             ->where('id', $id)
             ->update($data);
         return true;
@@ -78,7 +63,7 @@ class Order  {
      * @return boolean
      */
     public function delete($id){
-        DB::table('order')->where('id', '=', $id)->delete();
+        DB::table('item')->where('id', '=', $id)->delete();
         return true;
     }
 
