@@ -11,16 +11,14 @@
 |
 */
 
-/*Route::get('/', function()
-{
-	return View::make('hello');
-});*/
 
-
-//Route::get('/orders', 'OrderController@index');
 Route::get('/', 'UserController@index');
 Route::post('/user/login', 'UserController@login');
+Route::get('/logout', 'UserController@logout');
 
 Route::get('/orders', 'OrderController@index');
 Route::get('/order/{id}', 'OrderController@show');
-Route::get('/order/123', 'OrderController@showCreateForm');
+Route::get('/orders/create', 'OrderController@showCreateForm');
+Route::post('/orders/save', 'OrderController@saveOrder');
+Route::get('/orders/update/{id}', 'OrderController@showUpdateForm');
+Route::post('/orders/delete/{id}', 'OrderController@delete');

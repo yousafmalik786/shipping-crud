@@ -1,5 +1,4 @@
 <?php
-use DB;
 class User {
     /**
      * @param : array $data
@@ -37,7 +36,15 @@ class User {
     }
     public static function logout(){
         Session::forget('user_data');
-        redirect('user/login');
+        Redirect::to('/')->send();
+    }
+    public static function getUserId(){
+        $userData = Session::get('user_data');
+        $userId = 0;
+        if(is_array($userData)){
+            $userId = $userData['id'];
+        }
+        return $userId;
     }
 
 

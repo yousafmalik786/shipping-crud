@@ -1,10 +1,14 @@
 <?php
-class Item  {
+class ShipFrom  {
     private $rules = array(
-        'name'  => 'required',
-        'description'  => 'required',
-        'charges'  => 'required',
-        'quantity'  => 'required',
+        'email'  => 'required|email',
+        'frist_name'  => 'required',
+        'last_name'  => 'required',
+        'phone_no'  => 'required',
+        'address'  => 'required',
+        'city'  => 'required',
+        'zip'  => 'required',
+        'country'  => 'required',
     );
     private $messages;
 
@@ -32,7 +36,7 @@ class Item  {
      * @return array
      */
     public function get($id){
-        $result = DB::select('select * from item where id = :id', array($id));
+        $result = DB::select('select * from ship_from where id = :id', array($id));
         return $result;
     }
     /**
@@ -40,8 +44,7 @@ class Item  {
      * @return int $id
      */
     public static function insert($data){
-        $id = DB::table('item')->insertGetId($data);
-        //DB::getPdo()->lastInsertId();
+        $id = DB::table('ship_from')->insertGetId($data);
         return $id;
     }
 
@@ -51,7 +54,7 @@ class Item  {
      * @return boolean
      */
     public static function update($id,$data){
-        DB::table('item')
+        DB::table('ship_from')
             ->where('id', $id)
             ->update($data);
         return true;
@@ -62,7 +65,7 @@ class Item  {
      * @return boolean
      */
     public function delete($id){
-        DB::table('item')->where('id', '=', $id)->delete();
+        DB::table('ship_from')->where('id', '=', $id)->delete();
         return true;
     }
 

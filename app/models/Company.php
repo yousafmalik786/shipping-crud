@@ -1,10 +1,10 @@
 <?php
-class Item  {
+class Company  {
     private $rules = array(
-        'name'  => 'required',
-        'description'  => 'required',
-        'charges'  => 'required',
-        'quantity'  => 'required',
+        'company_name'  => 'required',
+        'address'  => 'required',
+        'contact_person'  => 'required',
+        'contact_person_phone'  => 'required',
     );
     private $messages;
 
@@ -32,7 +32,7 @@ class Item  {
      * @return array
      */
     public function get($id){
-        $result = DB::select('select * from item where id = :id', array($id));
+        $result = DB::select('select * from company where id = :id', array($id));
         return $result;
     }
     /**
@@ -40,7 +40,7 @@ class Item  {
      * @return int $id
      */
     public static function insert($data){
-        $id = DB::table('item')->insertGetId($data);
+        $id = DB::table('company')->insertGetId($data);
         //DB::getPdo()->lastInsertId();
         return $id;
     }
@@ -51,7 +51,7 @@ class Item  {
      * @return boolean
      */
     public static function update($id,$data){
-        DB::table('item')
+        DB::table('company')
             ->where('id', $id)
             ->update($data);
         return true;
@@ -62,7 +62,7 @@ class Item  {
      * @return boolean
      */
     public function delete($id){
-        DB::table('item')->where('id', '=', $id)->delete();
+        DB::table('company')->where('id', '=', $id)->delete();
         return true;
     }
 

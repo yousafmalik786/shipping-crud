@@ -9,3 +9,9 @@
 .login_form input{
     margin-bottom: 5px;
 }
+.create-new, .logout {
+	display: inline-block;
+}
+.logout{
+	margin-left: 4%
+}
