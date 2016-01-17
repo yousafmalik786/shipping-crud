@@ -1,0 +1,43 @@
+<?php echo $__env->make('common.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>;
+<div class="container">
+    <h2>Shipping - Orders </h2>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Order No</th>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Quanity</th>
+                        <th>Charges</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if(count($orders) > 0): ?>
+                        <?php foreach($orders as $order): ?>
+                        <tr>
+                            <td><?php echo $order->reference_no; ?></td>
+                            <td><?php echo $order->name; ?></td>
+                            <td><?php echo $order->description; ?></td>
+                            <td><?php echo $order->quantity; ?></td>
+                            <td><?php echo $order->charges; ?></td>
+                            <td><?php echo ($order->created_on)?date('m-d-Y',strtotime($order->created_on)):''; ?></td>
+                            <td>
+                                <a href="/order/<?php echo $order->id; ?>">&nbsp;<i class="fa fa-eye"></i></a>
+                                <a href="/order/update/<?php echo $order->id; ?>">&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i></a>
+                                <a href="javascript:void(0)" onclick="deleteOrder(<?php echo $order->id; ?>);">&nbsp; <i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div><!--end of .table-responsive-->
+        </div>
+    </div>
+</div>
+<?php echo $__env->make('common.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>;
